@@ -1,16 +1,18 @@
 name: Hourly News Update
 on:
   schedule:
-    - cron: '*/10 * * * *' # Runs every 10 mins
+    - cron: '*/10 * * * *' 
   workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # This tells GitHub to use Node 24 for all actions in this job
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
+      
     steps:
-      # Updated from v3 to v4 (Supports Node 24)
       - uses: actions/checkout@v4 
       
-      # Updated from v4 to v5 (Supports Node 24)
       - name: Set up Python
         uses: actions/setup-python@v5 
         with:
